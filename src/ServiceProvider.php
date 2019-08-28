@@ -2,6 +2,9 @@
 
 namespace MikeFrancis\LaravelUnleash;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 
@@ -15,6 +18,8 @@ class ServiceProvider extends IlluminateServiceProvider
   public function register()
   {
     $this->mergeConfigFrom($this->getConfigPath(), 'unleash');
+    // Interfaces
+    $this->app->bind(ClientInterface::class, Client::class);
   }
 
   /**
