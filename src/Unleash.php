@@ -100,7 +100,7 @@ class Unleash
   private function fetchFeatures(): array
   {
     try {
-      $response = $this->client->get('/api/client/features');
+      $response = $this->client->get($this->config->get('unleash.url') . '/api/client/features');
       $data = json_decode((string) $response->getBody(), true);
 
       return array_get($data, 'features', []);
